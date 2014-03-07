@@ -1,17 +1,14 @@
+#calling csvcut2 >> python <script_name> <column number>
 
+import sys
 import csv 
 
-#select csv file
-
-csvfile = raw_input('Enter filename with path:')
-
-#open csv file
 #cutting columns "csvcut -c"
-with open(csvfile, 'rb') as newfile: #examples found online didn't define 'rb' formatting option...i don't really see a difference
+filename = sys.argv[1]
+column = sys.argv[2]
+column = int(column) - 1
+with open(filename, 'rb') as newfile: #examples found online didn't define 'rb' formatting option...i don't really see a difference
 	readaline = csv.reader(newfile)
 	for row in readaline:
-		print row[0]
+		print row[column]
 
-#parse the file
-
-#close the file
